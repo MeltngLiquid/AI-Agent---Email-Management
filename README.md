@@ -1,55 +1,138 @@
-# Autonomous AI Email Agent for Task Management
+Intelligent Email & Calendar Assistant using Fine-Tuned LLM
+===========================================================
 
-This repository contains the source code and documentation for an autonomous AI agent designed to automate email inbox management. The agent intelligently processes incoming emails, classifies their intent, and executes relevant actions such as creating calendar events for deadlines or drafting replies to inquiries.
+Overview
+--------
 
----
-## 1. Overview
+This project implements an autonomous AI agent to automate personal email management. The agent connects to Gmail, perceives incoming messages, reasons about their intent using a fine-tuned language model, and executes actions such as scheduling calendar events for deadlines or drafting replies for questions.
 
-The primary objective of this project was to address the manual, time-consuming task of email processing by developing an AI agent capable of reasoning, planning, and executing actions. The final prototype successfully connects to Google Workspace APIs (Gmail & Calendar) and leverages a fine-tuned language model to create a closed-loop automation system.
+Built on a modular _perceive–think–act_ architecture, it leverages **LangGraph** for stateful workflows and a fine-tuned **Phi-3-mini-4k-instruct** model for reliable classification and data extraction.
 
----
-## 2. Core Features
+### Key Features
 
-* **Selective Processing:** The agent focuses exclusively on unread emails within the "Primary" Gmail category.
-* **Intelligent Intent Classification:** It uses an LLM to classify each email's purpose as a `deadline`, `question`, or `other`.
-* **Automated Scheduling:** For deadline-related emails, it extracts key details (task, date, time) and automatically creates a corresponding Google Calendar event.
-* **Human-in-the-Loop Replies:** For inquiries, it generates a relevant response and saves it as a draft in Gmail, allowing for human review and approval before sending.
-* **Persistent Memory:** The agent applies a custom Gmail label (`Agent-Processed`) to every email it handles, ensuring that emails are never processed more than once, even across separate runs.
+*   **Email Classification**: Categorizes emails as _deadline_, _question_, or _other_.
+    
+*   **Deadline Extraction & Scheduling**: Parses tasks and deadlines, creates Google Calendar events on success.
+    
+*   **Reply Drafting**: Generates context-aware reply drafts for questions and saves them in Gmail for review.
+    
+*   **Workflow Automation**: Processes unread emails in a loop, applies labels to avoid re-processing, and marks emails as read post-success.
+    
+*   **Evaluation Suite**: Performance metrics – F1 Score (~0.7), Task Success Rate (~80%), Semantic Similarity (~80%).
+    
+*   **Efficient Fine-Tuning**: Uses LoRA (PEFT) on a quantized 3.8B parameter model.
+    
 
----
-## 3. System Architecture and Design Rationale
+The agent demonstrates high reliability in core tasks, reducing manual email workload.
 
-The agent's architecture was designed to be robust, modular, and scalable, based on a "perceive-think-act" cycle.
+For a detailed report, see **Agent Architecture.pdf**.
 
-### 3.1. The Agentic Framework: LangGraph
+Prerequisites
+-------------
 
-A simple script would be too rigid for this task. I chose **LangGraph** as the foundational framework for several key reasons:
+### Hardware / Environment
 
-* **State Management:** LangGraph provides a robust, centralized state object (`AgentState`) that allows the agent to maintain context throughout its workflow.
-* **Modularity:** Each core capability (fetching emails, classifying, creating events) is encapsulated in a separate "node." This makes the system easy to debug, maintain, and extend with new tools in the future.
-* **Control Flow:** It enables the implementation of complex logic, including the loops and conditional routing (decision-making) necessary for a true agent.
+*   GPU Recommended (e.g., T4 on Colab)
+    
+*   Python 3.10+ (tested on Python 3.12)
+    
+*   Google Colab or Jupyter Notebook
+    
 
-### 3.2. The Reasoning Core: A Multi-Task Fine-Tuned LLM
+### Google API Setup
 
-The "brain" of the agent is a version of `microsoft/Phi-3-mini-4k-instruct`, which was fine-tuned using LoRA. The decision to fine-tune, rather than relying solely on prompting, was a critical choice driven by the need for **reliability**.
+1.  Go to the [Google Cloud Console](https://console.cloud.google.com/).
+    
+2.  Create a new project (or select an existing one).
+    
+3.  Enable Gmail API and Google Calendar API.
+    
+4.  Create OAuth 2.0 credentials:
+    
+    *   Select _Desktop Application_
+        
+    *   Download the JSON file and rename to credentials.json
+        
+    *   Place it in the project root
+        
+5.  Add scopes:
+    
+    *   https://www.googleapis.com/auth/gmail.modify
+        
+    *   https://www.googleapis.com/auth/calendar.events
+        
 
-* **Why Fine-Tuning was Essential:** The agent's most critical function is extracting structured data (a JSON object with a task and deadline) from unstructured text. While a base instruction-tuned model can be prompted to do this, its output is not guaranteed to be consistent. It might include conversational filler or use a slightly different format, which would break the automation pipeline. Fine-tuning the model on a specialized dataset forced it to become an expert at producing a clean, machine-readable JSON or `null` value, ensuring the reliability needed for this task.
+> **Security Note**: Never commit credentials.json to version control.
 
-* **Evolution to Multi-Task Fine-Tuning:** Initial evaluations revealed that the agent's routing accuracy was suboptimal. To address this, the fine-tuning strategy was expanded. The training dataset was augmented with examples for the classification task. By training the model on a combined dataset, it became a specialist at **both** high-level classification and low-level data extraction, significantly improving the agent's overall performance.
+Installation
+------------
 
-### 3.3. Tool Integration
-The agent is equipped with tools that serve as its "actuators" to interact with external services:
-* **Google Gmail API:** Allows the agent to perceive its environment (read emails) and act within it (create drafts, apply labels).
-* **Google Calendar API:** Allows the agent to execute scheduling tasks.
+1.  Clone the repository and move into the project directory.
+    
+2.  Upgrade pip.
+    
+3.  Install dependencies: transformers, datasets, accelerate, peft, trl, bitsandbytes.
+    
+4.  Install Google API clients: google-api-python-client, google-auth, google-auth-httplib2, google-auth-oauthlib.
+    
+5.  Install other tools: langgraph, typing\_extensions, sentencepiece, html2text, huggingface\_hub.
+    
+6.  Install evaluation packages: scikit-learn, sentence-transformers.
+    
+7.  Upload credentials.json and restart runtime after installation.
+    
 
----
-## 4. Setup and Usage
+Usage
+-----
 
-1.  **Prerequisites:** A Google Cloud project with the Gmail and Google Calendar APIs enabled, and `credentials.json` downloaded.
-2.  **Configuration:**
-    * Clone this repository.
-    * Place the `credentials.json` and the `dataset.jsonl` files in the root directory.
-    * In Gmail, create a new label named exactly `Agent-Processed`.
-3.  **Installation:** Run the first cell in the `email_agent_prototype.ipynb` to install all dependencies.
-4.  **Model Training (First Run Only):** Uncomment and run the "Fine-Tuning" cell to train the model and create the LoRA adapters. This only needs to be done once.
-5.  **Execution:** Run the remaining cells to initialize and start the agent. The first run will require an OAuth2 authentication flow in the browser.
+### 1\. Fine-Tune the Model
+
+*   Run the _FINETUNING THE BASE MODEL_ section in IBY\_SUBMIT.ipynb.
+    
+*   Trains LoRA adapters for ~6 epochs on Colab T4 GPU.
+    
+*   Outputs adapters in phi3-mini-deadline-extractor-adapters/.
+    
+
+### 2\. Initialize Services
+
+*   Run the _AUTHENTICATION_ section.
+    
+*   Authenticate via OAuth (console flow). Token saved to token.json.
+    
+*   Loads the fine-tuned model with 4-bit quantization.
+    
+
+### 3\. Run the Agent
+
+*   Execute the _THE AGENT_ section.
+    
+*   The agent monitors unread emails, classifies them, and applies actions.
+    
+*   Can be stopped anytime with Ctrl + C.
+    
+
+### 4\. Evaluate Performance
+
+*   Run the _Evaluation_ section.
+    
+*   Reports F1 Score, Task Success Rate, and Semantic Similarity.
+    
+
+Future Work
+-----------
+
+*   **Two-Model Architecture**: Use a larger LLM (e.g., Gemini or GPT-4) as an _Orchestrator_, with Phi-3 as a _Specialist_.
+    
+*   **Enhanced Tools**: Email summarization, attachment handling, multilingual support.
+    
+*   **Deployment**: Containerize with Docker; deploy as cron job or serverless function.
+    
+*   **Robustness**: Add error recovery, user feedback, and A/B testing.
+        
+
+
+Author
+------
+
+**Sriharsha Rao C** – IIT Hyderabad
