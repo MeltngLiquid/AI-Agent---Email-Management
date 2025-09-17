@@ -1,0 +1,38 @@
+{"text": "Subject: Urgent: Project Alpha Report\n\nA reminder that the final report for Project Alpha is due this Friday, September 19th, by 5 PM.", "response": "{\"task\": \"Submit final report for Project Alpha\", \"deadline\": \"2025-09-19T17:00:00\"}"}
+{"text": "Subject: Login Help\n\nI can't seem to log into the portal. Can you help me with this?", "response": "question"}
+{"text": "Subject: FYI: Office Maintenance\n\nPlease be aware of the planned maintenance this weekend. No action is required on your part.", "response": "other"}
+{"text": "Subject: Quick question about the slides\n\nHey, can you send me the marketing slides? Need them by tomorrow afternoon. Thanks!", "response": "{\"task\": \"Send marketing slides\", \"deadline\": \"2025-09-18T15:00:00\"}"}
+{"text": "Can you let me know what time the team meeting is?", "response": "question"}
+{"text": "The project proposal needs to be on my desk by next Tuesday evening.", "response": "{\"task\": \"Deliver the project proposal\", \"deadline\": \"2025-09-23T20:00:00\"}"}
+{"text": "Just a heads-up, the client's launch is on Sept 25th. Our internal prep meeting is on the 22nd.", "response": "{\"task\": \"Internal prep meeting for client launch\", \"deadline\": \"2025-09-22T09:00:00\"}"}
+{"text": "Weekly sales report is now available for viewing in the dashboard.", "response": "other"}
+{"text": "Hi, I had a question about the budget for Q4. Can we set up a time to chat?", "response": "question"}
+{"text": "Please remember to submit your expense reports from the conference. The final cutoff is 09/30/2025.", "response": "{\"task\": \"Submit expense reports from the conference\", \"deadline\": \"2025-09-30T23:59:59\"}"}
+{"text": "We need to be mindful of the upcoming project deadlines this quarter.", "response": "other"}
+{"text": "Can you please have the server rebooted in 3 hours?", "response": "{\"task\": \"Reboot the server\", \"deadline\": \"2025-09-17T20:04:21\"}"}
+{"text": "Did we ever get a final date for the project kickoff?", "response": "question"}
+{"text": "The new security policy will take effect on October 1st. Please review the attached PDF.", "response": "other"}
+{"text": "I'm running late, can we push our 10am call to 10:30am today?", "response": "{\"task\": \"Reschedule 10am call\", \"deadline\": \"2025-09-17T10:30:00\"}"}
+{"text": "Thanks for sending that over, I'll take a look.", "response": "other"}
+{"text": "Where can I find the documentation for the new API?", "response": "question"}
+{"text": "Your subscription is expiring soon. Please update your payment information.", "response": "other"}
+{"text": "The Q3 performance review is due EOD.", "response": "{\"task\": \"Complete Q3 performance review\", \"deadline\": \"2025-09-17T17:00:00\"}"}
+{"text": "What are the next steps for the Omega project?", "response": "question"}
+{"text": "Could you please approve my vacation request for next month?", "response": "question"}
+{"text": "All hands meeting is on the calendar for 11/5/2025.", "response": "{\"task\": \"Attend all hands meeting\", \"deadline\": \"2025-11-05T09:00:00\"}"}
+{"text": "Just confirming I've received the files. Thanks!", "response": "other"}
+{"text": "Please prepare the presentation for the client meeting next week.", "response": "{\"task\": \"Prepare presentation for the client meeting\", \"deadline\": \"2025-09-22T09:00:00\"}"}
+{"text": "How do I reset my password?", "response": "question"}
+{"text": "Reminder: your quarterly goals must be finalized by the end of this month.", "response": "{\"task\": \"Finalize quarterly goals\", \"deadline\": \"2025-09-30T23:59:59\"}"}
+{"text": "Invoice #1234 from Acme Corp is attached.", "response": "other"}
+{"text": "Is the project still on track for the original go-live date?", "response": "question"}
+{"text": "Please provide your feedback on the design mockups by Thursday.", "response": "{\"task\": \"Provide feedback on the design mockups\", \"deadline\": \"2025-09-18T23:59:59\"}"}
+{"text": "Happy birthday!", "response": "other"}
+{"text": "Just wanted to check in and see how things are going.", "response": "other"}
+{"text": "I was wondering about the status of my ticket #789.", "response": "question"}
+{"text": "Your Amazon order #123-456789 has shipped.", "response": "other"}
+{"text": "I'm having trouble with the software installation, any advice?", "response": "question"}
+{"text": "The team lunch has been canceled.", "response": "other"}
+{"text": "The documents for the merger need to be signed by noon tomorrow.", "response": "{\"task\": \"Sign documents for the merger\", \"deadline\": \"2025-09-18T12:00:00\"}"}
+{"text": "Could you explain the discrepancy in the latest sales figures?", "response": "question"}
+{"text": "Our new office address is 123 Main St. Please update your records.", "response": "other"}
