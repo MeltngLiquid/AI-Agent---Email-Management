@@ -87,7 +87,7 @@ Usage
 
 ### 1\. Fine-Tune the Model
 
-*   Run the _FINETUNING THE BASE MODEL_ section in IBY\_SUBMIT.ipynb.
+*   Run the _FINETUNING_ section in SOURCE_CODE.ipynb.
     
 *   Trains LoRA adapters for ~6 epochs on Colab T4 GPU.
     
