@@ -1,4 +1,16 @@
-# Core ML/Transformers
+# === Setup Instructions ===
+# 1. Go to Google Cloud Console (https://console.cloud.google.com/).
+# 2. Create a project and enable the Gmail API and Google Calendar API.
+# 3. Configure OAuth 2.0 Client ID (Desktop app) and download credentials.json.
+# 4. Place credentials.json in the project root directory.
+# 5. On first run, the script will generate token.json after you authenticate.
+# 6. Ensure that SCOPES includes:
+#    - https://www.googleapis.com/auth/gmail.modify
+#    - https://www.googleapis.com/auth/calendar.events
+# 7. Authorize using the same Gmail account you want to access.
+
+# === Python Dependencies ===
+torch
 transformers
 datasets
 accelerate
@@ -6,17 +18,11 @@ peft
 trl
 bitsandbytes
 sentencepiece==0.1.99
-
-# Google APIs
+langgraph==0.0.37
+typing_extensions
+huggingface_hub>=0.34.0,<1.0
 google-api-python-client==1.7.2
 google-auth==2.14.1
 google-auth-httplib2==0.0.3
 google-auth-oauthlib==0.4.1
-
-# LangGraph & Utilities
-langgraph==0.0.37
-typing_extensions
-html2text
-
-# Hugging Face Hub (specific range)
-huggingface_hub>=0.34.0,<1.0
+html2t
