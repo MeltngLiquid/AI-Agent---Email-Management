@@ -1,0 +1,32 @@
+﻿SOME OF MY COMMUNICATION WITH LLMs 
+
+The below was given by the LLMs when I asked it to give me some of my prompts
+
+Google API & Boilerplate
+* gmail api auth code, python, oauth
+* how to connect to google calendar api in python
+* give code to create draft in gmail, not send
+* gmail api query for unread in primary, but not with my label
+* how to parse sender email from the 'From' header
+* python code for sending reply with subject and message id
+AI Model & Library Usage
+* load lora model peft, code pls
+* sfttrainer arguments what r they
+* how to make custom prompt for trainer
+* give code for semantic similarity with sentence-transformers
+* how to load phi-3 in 4-bit with bitsandbytes
+* what is LoRA config for phi-3
+Debugging Errors
+* getting NameError result not defined fix the function
+* HttpError 400, recipient required. code is wrong, how to fix
+* agent is in endless loop for draft, how to stop it
+* classification accuracy is 0%, model is giving json instead of word, why
+* 'DynamicCache' object has no attribute 'seen_tokens' error, what is this
+* model is hallucinating bad date format, how to fix
+Generating Code & Docs
+* make mermaid flowchart for the agent logic
+* give me readme text for this project, make it good and professional
+* write the data science report for these results
+* how to calculate f1 score in python for my test results
+* give me a better test dataset, make it look real
+* write the python code for the full evaluation script
