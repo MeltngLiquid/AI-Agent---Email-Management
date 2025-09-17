@@ -1,4 +1,4 @@
-Intelligent Email & Calendar Assistant using Fine-Tuned LLM
+MailMind – AI Agent that manages your inbox intelligently.
 ===========================================================
 
 Overview
