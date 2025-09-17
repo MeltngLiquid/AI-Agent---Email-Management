@@ -80,7 +80,11 @@ Installation
 6.  Install evaluation packages: scikit-learn, sentence-transformers.
     
 7.  Upload credentials.json and restart runtime after installation.
+
+Result
+------
     
+<img width="1125" height="484" alt="image" src="https://github.com/user-attachments/assets/80ac482f-a0e4-4abd-b6fe-55987b9f6c90" />
 
 Usage
 -----
